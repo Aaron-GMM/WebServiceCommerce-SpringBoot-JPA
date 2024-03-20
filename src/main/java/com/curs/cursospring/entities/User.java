@@ -1,12 +1,10 @@
 package com.curs.cursospring.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 @Entity
 @Table(name = "tb_user")
@@ -20,6 +18,10 @@ public class User implements Serializable {
     private  String email;
     private  String tell;
     private String password;
+
+
+    @OneToMany(mappedBy = "Client")
+    private List<Order> orders = new ArrayList<>();
     public User() {
     }
     public  User(Long id, String nome,String email,String tell, String password){
@@ -41,6 +43,8 @@ public class User implements Serializable {
     public String getNome() {
         return nome;
     }
+
+    public List<Order> getOrders(){return orders;}
 
     public void setNome(String nome) {
         this.nome = nome;
