@@ -19,11 +19,15 @@ public class Product implements Serializable {
     private  Double  price ;
     private String  imgURL;
 
-    @Transient
+    @ManyToMany
+    @JoinTable(name="tb_product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
     public Product(){
 
     }
+
 
     public Product(Long id, String nome, String description, Double price, String imgURL) {
         this.id = id;
@@ -52,6 +56,12 @@ public class Product implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+
+
+    public Set<Category> getCategories() {
+        return categories;
     }
 
     public String getNome() {
