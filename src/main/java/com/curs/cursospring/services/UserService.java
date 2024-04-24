@@ -42,9 +42,13 @@ public class UserService {
     }
 
     public User update(long id, User newuser){
-        User entity = repository.getReferenceById(id);
-        updateData(entity, newuser);
-        return repository.save(entity);
+        try {
+            User entity = repository.getReferenceById(id);
+            updateData(entity, newuser);
+            return repository.save(entity);
+        }catch (EmptyResultDataAccessException e){
+            throw new ResourceNotFoundException(id);
+        }
     }
     public  void updateData(User entity, User obj){
         entity.setNome(obj.getNome());
