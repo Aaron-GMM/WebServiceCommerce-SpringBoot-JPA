@@ -13,6 +13,6 @@ FROM openjdk:21-jdk-slim
 
 EXPOSE 8080
 
-COPY --from=build /target/*.jar /app/audaz-backend.jar
+COPY --from=build /target/*.jar /ursospring/cursospring.jar
 
-ENTRYPOINT [ "java", "-jar", "/app/audaz-backend.jar" ]
+ENTRYPOINT [ "java", "-jar", "/cursospring/cursospring.jar" ]
