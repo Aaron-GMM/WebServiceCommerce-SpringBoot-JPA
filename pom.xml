@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.curs</groupId>
-	<artifactId>cursospring</artifactId>
+	<artifactId>webservicecommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cursospring</name>
 	<description>curso de springboot</description>
